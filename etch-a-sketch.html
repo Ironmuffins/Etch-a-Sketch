@@ -1,0 +1,19 @@
+<hmtl>
+    <head>
+        <title>Etch-a-Sketch</title>
+        <link rel=stylesheet href = "style.css">
+    </head>
+    <body>
+        <div id=container></div>
+        <script>
+            //create grid and add to DOM
+            const container = document.querySelector('#container');
+            for (let i = 0; i < 16; i++) {
+                let griditem = document.createElement("div")
+                griditem.className = "griditem";
+                container.appendChild(griditem);
+                griditem.textContent = "test";
+            }
+        </script>
+    </body>
+</hmtl>
