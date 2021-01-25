@@ -4,16 +4,58 @@
         <link rel=stylesheet href = "style.css">
     </head>
     <body>
+        <h1>Etch-a-Sketch</h1>
+        <button id='clear'>Clear</button>
         <div id=container></div>
         <script>
+            
             //create grid and add to DOM
             const container = document.querySelector('#container');
+            initialGrid();
+            function initialGrid(){
             for (let i = 0; i < 16; i++) {
-                let griditem = document.createElement("div")
+                let griditem = document.createElement("div");
                 griditem.className = "griditem";
+                griditem.id = "griditem" + [i];
                 container.appendChild(griditem);
-                griditem.textContent = "test";
             }
+            }
+
+            //Clear Grid and create new grid
+            let clearButton = document.querySelector('#clear');
+            clearButton.addEventListener('click', newGrid);
+            function newGrid() {
+            let gridSize = prompt("How many squares should the grid have?");
+            
+            //Clear Old Grid
+            clearOldGrid();
+            function clearOldGrid(){
+            while (container.firstChild) {
+                container.removeChild(container.firstChild);
+            }
+            }
+            
+            //Create New Grid
+            createNewGrid();
+                function createNewGrid(){
+                for (let i = 0; i < gridSize; i++) {
+                let griditem = document.createElement("div");
+                griditem.className = "griditem";
+                griditem.id = "griditem" + [i];
+                container.appendChild(griditem);
+                }
+            }
+            }
+
+             //change color when hovered
+            let griditems = document.querySelectorAll('.griditem');
+            griditems.forEach((div) => {
+              div.addEventListener('mouseover', () => {
+                div.style.backgroundColor = 'black';
+            });
+            });
+
+            
         </script>
     </body>
 </hmtl>
