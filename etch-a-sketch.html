@@ -5,33 +5,30 @@
     </head>
     <body>
         <h1>Etch-a-Sketch</h1>
-        <h2>Pick a size and color!</h2>
         <h2>Size:</h2>
+        <div class='sizeButtons'>
         <button id='large'>Large</button>
-        <button id='smaller'>Small</button>
+        <button id='small'>Small</button>
         <button id='smallest'>Smallest</button>
+        </div>
         <h2>Colors:</h2>
+        <div class='colorButtons'>
         <button id='black'>Black</button>
         <button id='pink'>Pink</button>
-        <button id='blue'>Blue</button>  
+        <button id='blue'>Blue</button>
+        </div>
         <br>
         <br>
+        <div class='otherButtons'>
         <button id='eraser'>Eraser</button>
         <button id='clear'>Clear</button>
+        </div>
         <div class=container></div>
         <script>
-            //create grid and add to DOM
             const container = document.querySelector('.container');
-            //change color when hovered
-            changeColor();
-            function changeColor() {
-            let griditems = document.querySelectorAll('.griditem');
-            griditems.forEach((div) => {
-              div.addEventListener('mousemove', () => {
-                div.style.backgroundColor = 'black';
-            })
-            })
-            }
+            //Runs default selections before user input
+            large()
+            changeColorBlack()
             //Black button
             let blackButton = document.querySelector('#black');
             blackButton.addEventListener('click', changeColorBlack)
@@ -77,19 +74,21 @@
                 griditem.id = "griditem" + [i];
                 container.appendChild(griditem);
             }
+            changeColorBlack()
             }
-            //Smaller Squares
-            let smallerButton = document.querySelector('#smaller');
-            smallerButton.addEventListener('click', smaller)
-            function smaller(){
+            //Small Squares
+            let smallButton = document.querySelector('#small');
+            smallButton.addEventListener('click', small)
+            function small(){
                 clearOldGrid();
             for (let i = 0; i < 2500; i++) {
                 let griditem = document.createElement("div");
                 container.id = "container-small"
                 griditem.className = "griditem";
                 griditem.id = "griditem" + [i];
-                container.appendChild(griditem);
+                container.appendChild(griditem);    
             }
+            changeColorBlack()
             }
             //Smallest Squares
             let smallestButton = document.querySelector('#smallest');
@@ -103,6 +102,7 @@
                 griditem.id = "griditem" + [i];
                 container.appendChild(griditem);
             }
+            changeColorBlack()
             }
             //Eraser Button
             let eraserButton = document.querySelector('#eraser');
@@ -121,7 +121,7 @@
             function clearOldGrid(){
             while (container.firstChild) {
                 container.removeChild(container.firstChild);
-            }
+            }       
             }
         </script>
     </body>

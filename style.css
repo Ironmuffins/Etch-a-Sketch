@@ -3,7 +3,8 @@
     height: 750px;
     display:grid;
     border: solid 1px black;
-    flex-wrap: wrap;   
+    flex-wrap: wrap; 
+    margin: 0 auto;  
 }
 #container-large {
     grid-template-rows: repeat(25, 1fr);
@@ -17,7 +18,33 @@
     grid-template-rows: repeat(100, 1fr);
     grid-template-columns: repeat(100, 1fr);
 }
-
 .griditem {
     border: 1px solid rgba(232, 236, 241, .4);
+    border-radius: 2px;
+}
+h1, h2 {
+    text-align: center;  
+}
+button {
+    margin: 0 auto;
+}
+.sizeButtons, .colorButtons, .otherButtons {
+    text-align: center;
+}
+#pink {
+    background-color: pink;
+}
+#blue {
+    background-color: blue;
+    color: white;
+}
+#black {
+    background-color: black;
+    color: white;
+}
+#large {
+    padding: 10px;
+}
+#small {
+    padding: 5px;
 }
