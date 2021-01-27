@@ -5,30 +5,23 @@
     </head>
     <body>
         <h1>Etch-a-Sketch</h1>
+        <h2>Pick a size and color!</h2>
+        <h2>Size:</h2>
+        <button id='large'>Large</button>
+        <button id='smaller'>Small</button>
+        <button id='smallest'>Smallest</button>
+        <h2>Colors:</h2>
         <button id='black'>Black</button>
         <button id='pink'>Pink</button>
-        <button id='blue'>Blue</button>
-        <button id='eraser'>Eraser</button>
-        <button id='smaller'>Smaller squares</button>
-        <button id='smallest'>SMALLER</button>
-        <button id='clear'>Clear</button>
-
+        <button id='blue'>Blue</button>  
         <br>
+        <br>
+        <button id='eraser'>Eraser</button>
+        <button id='clear'>Clear</button>
         <div class=container></div>
         <script>
             //create grid and add to DOM
             const container = document.querySelector('.container');
-            let gridSize = 100
-            initialGrid();
-            function initialGrid(){
-            for (let i = 0; i < gridSize; i++) {
-                let griditem = document.createElement("div");
-                container.id = "container-large"
-                griditem.className = "griditem";
-                griditem.id = "griditem" + [i];
-                container.appendChild(griditem);
-            }
-            }
             //change color when hovered
             changeColor();
             function changeColor() {
@@ -72,7 +65,19 @@
             })
             })
             }
-
+            //Large Squares
+            let largeButton = document.querySelector('#large');
+            largeButton.addEventListener('click', large)
+            function large(){
+                clearOldGrid();
+            for (let i = 0; i < 625; i++) {
+                let griditem = document.createElement("div");
+                container.id = "container-large"
+                griditem.className = "griditem";
+                griditem.id = "griditem" + [i];
+                container.appendChild(griditem);
+            }
+            }
             //Smaller Squares
             let smallerButton = document.querySelector('#smaller');
             smallerButton.addEventListener('click', smaller)
@@ -86,7 +91,6 @@
                 container.appendChild(griditem);
             }
             }
-
             //Smallest Squares
             let smallestButton = document.querySelector('#smallest');
             smallestButton.addEventListener('click', smallest)
@@ -94,49 +98,31 @@
                 clearOldGrid();
             for (let i = 0; i < 10000; i++) {
                 let griditem = document.createElement("div");
-                container.id = "container-small"
+                container.id = "container-smallest"
                 griditem.className = "griditem";
                 griditem.id = "griditem" + [i];
                 container.appendChild(griditem);
             }
             }
+            //Eraser Button
+            let eraserButton = document.querySelector('#eraser');
+            eraserButton.addEventListener('click', eraser)
+            function eraser(){
+                let griditems = document.querySelectorAll('.griditem');
+                griditems.forEach((div) => {
+                div.addEventListener('mousemove', () => {
+                div.style.backgroundColor = 'white';
+            })
+            })
+            }
             //Clear button
             let clearButton = document.querySelector('#clear');
-            clearButton.addEventListener('click', newGrid);
-            //Clear Grid and create new grid
-            function newGrid() {
-            clearOldGrid();
-            initialGrid();         
-            changeColor();
-            }
+            clearButton.addEventListener('click', clearOldGrid);
             function clearOldGrid(){
             while (container.firstChild) {
                 container.removeChild(container.firstChild);
             }
             }
-            
-            
-
-            
-
-            
-
-           
-
-            
-
-             //   createNewGrid();
-        //    function createNewGrid(){
-        //        for (let i = 0; i < (gridSize * gridSize); i++) {
-       //         let griditem = document.createElement("div");
-       //         griditem.className = "griditem";
-       //         griditem.id = "griditem" + [i];
-        //        container.appendChild(griditem);
-
-        //        container.style.gridTemplateColumns = 'minmax(4, 50)';
-        //        container.style.gridTemplateRows = 'minmax(4, 100)';    
-         //       }
-         //   } 
         </script>
     </body>
 </hmtl>

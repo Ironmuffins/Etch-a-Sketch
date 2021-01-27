@@ -6,15 +6,18 @@
     flex-wrap: wrap;   
 }
 #container-large {
-    grid-template-rows: repeat(10, 1fr);
-    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(25, 1fr);
+    grid-template-columns: repeat(25, 1fr);
 }
 #container-small {
     grid-template-rows: repeat(50, 1fr);
     grid-template-columns: repeat(50, 1fr);
 }
-
 #container-smallest {
     grid-template-rows: repeat(100, 1fr);
     grid-template-columns: repeat(100, 1fr);
+}
+
+.griditem {
+    border: 1px solid rgba(232, 236, 241, .4);
 }
