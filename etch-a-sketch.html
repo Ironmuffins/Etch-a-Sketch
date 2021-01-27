@@ -5,57 +5,139 @@
     </head>
     <body>
         <h1>Etch-a-Sketch</h1>
+        <button id='black'>Black</button>
+        <button id='pink'>Pink</button>
+        <button id='blue'>Blue</button>
+        <button id='eraser'>Eraser</button>
+        <button id='smaller'>Smaller squares</button>
+        <button id='smallest'>SMALLER</button>
         <button id='clear'>Clear</button>
-        <div id=container></div>
+
+        <br>
+        <div class=container></div>
         <script>
-            
             //create grid and add to DOM
-            const container = document.querySelector('#container');
+            const container = document.querySelector('.container');
+            let gridSize = 100
             initialGrid();
             function initialGrid(){
-            for (let i = 0; i < 16; i++) {
+            for (let i = 0; i < gridSize; i++) {
                 let griditem = document.createElement("div");
+                container.id = "container-large"
+                griditem.className = "griditem";
+                griditem.id = "griditem" + [i];
+                container.appendChild(griditem);
+            }
+            }
+            //change color when hovered
+            changeColor();
+            function changeColor() {
+            let griditems = document.querySelectorAll('.griditem');
+            griditems.forEach((div) => {
+              div.addEventListener('mousemove', () => {
+                div.style.backgroundColor = 'black';
+            })
+            })
+            }
+            //Black button
+            let blackButton = document.querySelector('#black');
+            blackButton.addEventListener('click', changeColorBlack)
+            function changeColorBlack() {
+                let griditems = document.querySelectorAll('.griditem');
+                griditems.forEach((div) => {
+                div.addEventListener('mousemove', () => {
+                div.style.backgroundColor = 'black';
+            })
+            })
+            }
+            //Blue button
+            let blueButton = document.querySelector('#blue');
+            blueButton.addEventListener('click', changeColorBlue)
+            function changeColorBlue() {
+                let griditems = document.querySelectorAll('.griditem');
+                griditems.forEach((div) => {
+                div.addEventListener('mousemove', () => {
+                div.style.backgroundColor = 'blue';
+            })
+            })
+            }
+            //Pink button
+            let pinkButton = document.querySelector('#pink');
+            pinkButton.addEventListener('click', changeColorPink)
+            function changeColorPink(){
+                let griditems = document.querySelectorAll('.griditem');
+                griditems.forEach((div) => {
+                div.addEventListener('mousemove', () => {
+                div.style.backgroundColor = 'pink';
+            })
+            })
+            }
+
+            //Smaller Squares
+            let smallerButton = document.querySelector('#smaller');
+            smallerButton.addEventListener('click', smaller)
+            function smaller(){
+                clearOldGrid();
+            for (let i = 0; i < 2500; i++) {
+                let griditem = document.createElement("div");
+                container.id = "container-small"
                 griditem.className = "griditem";
                 griditem.id = "griditem" + [i];
                 container.appendChild(griditem);
             }
             }
 
-            //Clear Grid and create new grid
+            //Smallest Squares
+            let smallestButton = document.querySelector('#smallest');
+            smallestButton.addEventListener('click', smallest)
+            function smallest(){
+                clearOldGrid();
+            for (let i = 0; i < 10000; i++) {
+                let griditem = document.createElement("div");
+                container.id = "container-small"
+                griditem.className = "griditem";
+                griditem.id = "griditem" + [i];
+                container.appendChild(griditem);
+            }
+            }
+            //Clear button
             let clearButton = document.querySelector('#clear');
             clearButton.addEventListener('click', newGrid);
+            //Clear Grid and create new grid
             function newGrid() {
-            let gridSize = prompt("How many squares should the grid have?");
-            
-            //Clear Old Grid
             clearOldGrid();
+            initialGrid();         
+            changeColor();
+            }
             function clearOldGrid(){
             while (container.firstChild) {
                 container.removeChild(container.firstChild);
             }
             }
             
-            //Create New Grid
-            createNewGrid();
-                function createNewGrid(){
-                for (let i = 0; i < gridSize; i++) {
-                let griditem = document.createElement("div");
-                griditem.className = "griditem";
-                griditem.id = "griditem" + [i];
-                container.appendChild(griditem);
-                }
-            }
-            }
-
-             //change color when hovered
-            let griditems = document.querySelectorAll('.griditem');
-            griditems.forEach((div) => {
-              div.addEventListener('mouseover', () => {
-                div.style.backgroundColor = 'black';
-            });
-            });
+            
 
             
+
+            
+
+           
+
+            
+
+             //   createNewGrid();
+        //    function createNewGrid(){
+        //        for (let i = 0; i < (gridSize * gridSize); i++) {
+       //         let griditem = document.createElement("div");
+       //         griditem.className = "griditem";
+       //         griditem.id = "griditem" + [i];
+        //        container.appendChild(griditem);
+
+        //        container.style.gridTemplateColumns = 'minmax(4, 50)';
+        //        container.style.gridTemplateRows = 'minmax(4, 100)';    
+         //       }
+         //   } 
         </script>
     </body>
 </hmtl>
+
