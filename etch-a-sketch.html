@@ -66,6 +66,7 @@
             let largeButton = document.querySelector('#large');
             largeButton.addEventListener('click', large)
             function large(){
+                if (container.id !== "container-large") {
                 clearOldGrid();
             for (let i = 0; i < 625; i++) {
                 let griditem = document.createElement("div");
@@ -76,10 +77,12 @@
             }
             changeColorBlack()
             }
+            }
             //Small Squares
             let smallButton = document.querySelector('#small');
             smallButton.addEventListener('click', small)
             function small(){
+                if (container.id !== "container-small") {
                 clearOldGrid();
             for (let i = 0; i < 2500; i++) {
                 let griditem = document.createElement("div");
@@ -90,10 +93,12 @@
             }
             changeColorBlack()
             }
+            }
             //Smallest Squares
             let smallestButton = document.querySelector('#smallest');
             smallestButton.addEventListener('click', smallest)
             function smallest(){
+                if (container.id !== "container-smallest") {
                 clearOldGrid();
             for (let i = 0; i < 10000; i++) {
                 let griditem = document.createElement("div");
@@ -103,6 +108,7 @@
                 container.appendChild(griditem);
             }
             changeColorBlack()
+            }
             }
             //Eraser Button
             let eraserButton = document.querySelector('#eraser');

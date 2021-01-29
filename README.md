@@ -1,11 +1,8 @@
 This projects demonstrates my growing skills in HTML, CSS, and Javascript.
 Effectivley manipulating the DOM was particularly important.
 
-New changes this update:
-*You can now etch that sketch without pressing any buttons first. 
-*when changing sizes, the color is automatically selected to black.
-*Added styling to size and color buttons
-*Centered all elements to page
+New features:
+When selecting the size you already have selected, it no longer erases user markings
 
 Existing functions:
 When mousing over the grid, the color is changed to the users selection for each box.
