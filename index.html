@@ -1,0 +1,135 @@
+<hmtl>
+    <head>
+        <title>Etch-a-Sketch</title>
+        <link rel=stylesheet href = "style.css">
+    </head>
+    <body>
+        <h1>Etch-a-Sketch</h1>
+        <h2>Size:</h2>
+        <div class='sizeButtons'>
+        <button id='large'>Large</button>
+        <button id='small'>Small</button>
+        <button id='smallest'>Smallest</button>
+        </div>
+        <h2>Colors:</h2>
+        <div class='colorButtons'>
+        <button id='black'>Black</button>
+        <button id='pink'>Pink</button>
+        <button id='blue'>Blue</button>
+        </div>
+        <br>
+        <br>
+        <div class='otherButtons'>
+        <button id='eraser'>Eraser</button>
+        <button id='clear'>Clear</button>
+        </div>
+        <div class=container></div>
+        <script>
+            const container = document.querySelector('.container');
+            //Runs default selections before user input
+            large()
+            changeColorBlack()
+            //Black button
+            let blackButton = document.querySelector('#black');
+            blackButton.addEventListener('click', changeColorBlack)
+            function changeColorBlack() {
+                let griditems = document.querySelectorAll('.griditem');
+                griditems.forEach((div) => {
+                div.addEventListener('mousemove', () => {
+                div.style.backgroundColor = 'black';
+            })
+            })
+            }
+            //Blue button
+            let blueButton = document.querySelector('#blue');
+            blueButton.addEventListener('click', changeColorBlue)
+            function changeColorBlue() {
+                let griditems = document.querySelectorAll('.griditem');
+                griditems.forEach((div) => {
+                div.addEventListener('mousemove', () => {
+                div.style.backgroundColor = 'blue';
+            })
+            })
+            }
+            //Pink button
+            let pinkButton = document.querySelector('#pink');
+            pinkButton.addEventListener('click', changeColorPink)
+            function changeColorPink(){
+                let griditems = document.querySelectorAll('.griditem');
+                griditems.forEach((div) => {
+                div.addEventListener('mousemove', () => {
+                div.style.backgroundColor = 'pink';
+            })
+            })
+            }
+            //Large Squares
+            let largeButton = document.querySelector('#large');
+            largeButton.addEventListener('click', large)
+            function large(){
+                if (container.id !== "container-large") {
+                clearOldGrid();
+            for (let i = 0; i < 625; i++) {
+                let griditem = document.createElement("div");
+                container.id = "container-large"
+                griditem.className = "griditem";
+                griditem.id = "griditem" + [i];
+                container.appendChild(griditem);
+            }
+            changeColorBlack()
+            }
+            }
+            //Small Squares
+            let smallButton = document.querySelector('#small');
+            smallButton.addEventListener('click', small)
+            function small(){
+                if (container.id !== "container-small") {
+                clearOldGrid();
+            for (let i = 0; i < 2500; i++) {
+                let griditem = document.createElement("div");
+                container.id = "container-small"
+                griditem.className = "griditem";
+                griditem.id = "griditem" + [i];
+                container.appendChild(griditem);    
+            }
+            changeColorBlack()
+            }
+            }
+            //Smallest Squares
+            let smallestButton = document.querySelector('#smallest');
+            smallestButton.addEventListener('click', smallest)
+            function smallest(){
+                if (container.id !== "container-smallest") {
+                clearOldGrid();
+            for (let i = 0; i < 10000; i++) {
+                let griditem = document.createElement("div");
+                container.id = "container-smallest"
+                griditem.className = "griditem";
+                griditem.id = "griditem" + [i];
+                container.appendChild(griditem);
+            }
+            changeColorBlack()
+            }
+            }
+            //Eraser Button
+            let eraserButton = document.querySelector('#eraser');
+            eraserButton.addEventListener('click', eraser)
+            function eraser(){
+                let griditems = document.querySelectorAll('.griditem');
+                griditems.forEach((div) => {
+                div.addEventListener('mousemove', () => {
+                div.style.backgroundColor = 'white';
+            })
+            })
+            }
+            //Clear button
+            let clearButton = document.querySelector('#clear');
+            clearButton.addEventListener('click', clearOldGrid);
+            function clearOldGrid(){
+            while (container.firstChild) {
+                container.removeChild(container.firstChild);
+            }       
+            }
+        </script>
+    </body>
+</hmtl>
+
